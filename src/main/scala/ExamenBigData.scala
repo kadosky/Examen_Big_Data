@@ -1,3 +1,6 @@
+/*
+ DIOP ASSANE IDSI 2021
+* */
 import scala.collection.breakOut
 import scala.collection.immutable.ListMap
 object ExamenBigData {
@@ -8,6 +11,11 @@ object ExamenBigData {
 
   def avoir_domaine(lien:String) : String ={ // elle permet d'avoir les domaines des liens
     return lien.replace("https://www.","").split("/")(0)
+    /*
+      pour cette fonction remplace le "https://www." par un vide et ensuite j'effectue
+      un split par "/" diviser le texte et pour terminer je prend le valeur 0 de la liste
+      obtenue
+    */
   }
 
   def liste_double(): Unit ={
