@@ -3,29 +3,28 @@ import scala.collection.immutable.ListMap
 object ExamenBigData {
 
   def ModifList(liste:List[String]): List[String] =  {
-    val listeFinal = liste.filter(l => l.endsWith("n"))
-    return listeFinal
+    return liste.filter(element =>element.endsWith("n"))
   }
 
-  def avoirdomaine(lien:String) : String ={ // elle permet d'avoir les domaines des liens
+  def avoir_domaine(lien:String) : String ={ // elle permet d'avoir les domaines des liens
     return lien.replace("https://www.","").split("/")(0)
   }
 
   def liste_double(): Unit ={
-    val Maliste = List(("ecommercemag.fr"," "),
+    val Maliste = List(("ecommercemag.fr",null),
       ("https://www.journalducm.com/contact/","Payant"),
-      ("https://www.zatsaz.com/"," "),
-      ("https://www.lerevenu.com/"," "),
+      ("https://www.zatsaz.com/",null),
+      ("https://www.lerevenu.com/",null),
       ("https://www.cadre-dirigfdeant-magazine.com/","Payant"),
       ("https://www.silicon.fr/services/contact#annoner","Payant"),
-      ("https://www.channelbiz.fr/nous-contacter/"," "),
-      ("https://www.itespresso.fr/"," "),
+      ("https://www.channelbiz.fr/nous-contacter/",null),
+      ("https://www.itespresso.fr/",null),
       ("https://www.industrie-mag.com/article4.html","invite"),
       ("https://www.jesuisundev.com/article-invite/","invite"),
-      ("https://www.numerama.com/"," ")
+      ("https://www.numerama.com/",null)
     )
-    // je cree d'abord une liste avec les domaines et ensuite je fais une fusion
-    val finalListe =  (ListMap(Maliste:_*).keys.toList.map(l => avoirdomaine(l) ) zip ListMap(Maliste:_*).values).toList // funsionner les 2 dans une liste de tuple
+    // je cree d'abord une liste avec les domaines et ensuite je fais une fusion avec la 2nde colonne
+    val finalListe =  (ListMap(Maliste:_*).keys.toList.map(l => avoir_domaine(l) ) zip ListMap(Maliste:_*).values).toList // funsionner les 2 dans une liste de tuple
 
     println(finalListe)
   }
